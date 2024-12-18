@@ -10,11 +10,16 @@ int max(int a , int b){
 }
 
 NoeudAVL *creerNoeud(char *elt[]) {
+    // Robustesse : Vérification des paramètres d'entrée
+    if (elt == NULL) {
+        fprintf(stderr, "Erreur : Paramètre elt est NULL\n");
+        return NULL;
+    }	
     // Allocation mémoire pour le nœud
     NoeudAVL *n = (NoeudAVL *)malloc(sizeof(NoeudAVL));
     if (n == NULL) {
         perror("Erreur d'allocation mémoire");
-        return NULL; // Gestion de l'erreur d'allocation
+        return NULL; // Robustesse : Gestion de l'erreur d'allocation
     }
     // Extraction des id et du type en fonction des conditions
     if (atoi(elt[3]) != 0) {
@@ -31,6 +36,7 @@ NoeudAVL *creerNoeud(char *elt[]) {
     n->hauteur = 0;
     return n;
 }
+
 
 // Fonction pour choisir le nom du fichier selon l'entrée de l'utilisateur
 void choisirNomFichier(char *nom_fichier, char *nom_fichier2) {
@@ -73,7 +79,6 @@ void choisirNomFichier(char *nom_fichier, char *nom_fichier2) {
             printf("Erreur de format dans la ligne: %s\n", ligne);
         }
     }
-    
     // Libérer la mémoire
     free(elt1);
     free(elt2);
@@ -85,9 +90,21 @@ void choisirNomFichier(char *nom_fichier, char *nom_fichier2) {
     free(elt8);
     
     fclose(fic);  // Fermer le fichier
+    
 }
 
 NoeudAVL * rotationGauche(NoeudAVL * n) {
+    // Robustesse : Vérification du paramètre d'entrée
+    if (n == NULL) {
+        fprintf(stderr, "Erreur : Nœud NULL passé à rotationGauche\n");
+        return NULL;
+    }
+
+    if (n->droite == NULL) {
+        fprintf(stderr, "Erreur : Rotation gauche impossible, le sous-arbre droit est NULL\n");
+        return n; // Retourne le nœud actuel, aucune rotation n'est effectuée
+    }
+
     NoeudAVL * temp = n->droite;   // Le sous-arbre droit devient la nouvelle racine.
     n->droite = temp->gauche;      // Le sous-arbre gauche de temp devient le sous-arbre droit de n.
     temp->gauche = n;              // n devient le sous-arbre gauche de temp.
@@ -100,6 +117,17 @@ NoeudAVL * rotationGauche(NoeudAVL * n) {
 }
 
 NoeudAVL * rotationDroite(NoeudAVL * n) {
+    //Robustesse : Vérification du paramètre d'entrée
+    if (n == NULL) {
+        fprintf(stderr, "Erreur : Nœud NULL passé à rotationDroite\n");
+        return NULL;
+    }
+
+    if (n->gauche == NULL) {
+        fprintf(stderr, "Erreur : Rotation droite impossible, le sous-arbre gauche est NULL\n");
+        return n; // Retourne le nœud actuel, aucune rotation n'est effectuée
+    }
+    
     NoeudAVL * temp = n->gauche;   // Le sous-arbre gauche devient la nouvelle racine.
     n->gauche = temp->droite;      // Le sous-arbre droit de temp devient le sous-arbre gauche de n.
     temp->droite = n;              // n devient le sous-arbre droit de temp.
@@ -113,6 +141,13 @@ NoeudAVL * rotationDroite(NoeudAVL * n) {
 
 
 NoeudAVL* inserer(NoeudAVL* n, NoeudAVL* nouveau) {
+    // Robustesse : Vérification des paramètres d'entrée
+    if (nouveau == NULL) {
+        fprintf(stderr, "Erreur : Nœud à insérer est NULL\n");
+        return n; // Retourne le nœud actuel sans modification
+    }
+  
+    
     if (n == NULL) {
         return nouveau;
     }
@@ -151,20 +186,32 @@ NoeudAVL* inserer(NoeudAVL* n, NoeudAVL* nouveau) {
 
 
 NoeudAVL *rechercher(NoeudAVL *n, int id) {
+    // Robustesse : Vérification du paramètre d'entrée
     if (n == NULL) {
+        fprintf(stderr, "Erreur : Arbre ou sous-arbre NULL dans rechercher\n");
         return NULL;
     }
+
+    if (n == NULL) {
+        return NULL; // retourne n car n est NULL
+    }
     if (n->id == id) {
-        return n;
+        return n; // si l'id est trouvé, alors on retourne le noeud
     }
     if (id < n->id) {
-        return rechercher(n->gauche, id);
+        return rechercher(n->gauche, id); // si l'id est plus petit, on effectue le parcourt à gauche de l'AVL
     }
-    return rechercher(n->droite, id);
+    return rechercher(n->droite, id); // si l'id est plus grand, on effectue le parcourt à droite de l'AVL
 }
 
 
 NoeudAVL * lire_fichier_station(FILE *fic) {
+    // Robustesse : Vérification de l'entrée
+    if (fic == NULL) {
+        fprintf(stderr, "Erreur : Fichier NULL passé à lire_fichier_station\n");
+        return NULL;
+    }
+
     char ligne[256];
     // Déclaration des tableaux de chaînes pour chaque élément
     char *elt1 = (char*)malloc(256 * sizeof(char));
@@ -206,6 +253,16 @@ NoeudAVL * lire_fichier_station(FILE *fic) {
 
 
 void lire_fichier_consommateur(FILE *fic, NoeudAVL *n) {
+    // Robustesse : Vérification des paramètres d'entrée
+    if (fic == NULL) {
+        fprintf(stderr, "Erreur : Fichier NULL passé à lire_fichier_consommateur\n");
+        return;
+    }
+    if (n == NULL) {
+        fprintf(stderr, "Erreur : Arbre AVL NULL passé à lire_fichier_consommateur\n");
+        return;
+    }
+
     char ligne[256];
     char *elt1 = (char *)malloc(256 * sizeof(char));
     char *elt2 = (char *)malloc(256 * sizeof(char));
@@ -265,7 +322,7 @@ void ecrire_parcours_inf(NoeudAVL *n, FILE *fichier) {
     ecrire_parcours_inf(n->droite, fichier);
 }
 
-// Function to collect nodes into an array during an in-order traversal
+// Fonction qui collecte les noeuds et leurs consommations dans un tableau via un parcourt infixe de l'AVL
 void collectNodes(NoeudAVL *node, NodeInfo *array, int *index) {
     if (node == NULL) return;
     collectNodes(node->gauche, array, index);
@@ -276,7 +333,7 @@ void collectNodes(NoeudAVL *node, NodeInfo *array, int *index) {
     collectNodes(node->droite, array, index);
 }
 
-// Bubble sort by consumption (descending order)
+// Tri bulle par consommation (decroissant)
 void bubbleSort(NodeInfo *array, int size) {
     for (int i = 0; i < size - 1; i++) {
         for (int j = 0; j < size - i - 1; j++) {
@@ -289,9 +346,9 @@ void bubbleSort(NodeInfo *array, int size) {
     }
 }
 
-// Function to process and write top 10 highest and lowest consumption stations
+// Fonction qui écrit dans le fichier les 10 stations avec la consommation maximum et les 10 station avec la consommation minimum dans l'ordre décroissant
 void processTopAndBottomLV(NoeudAVL *root, const char *outputFile) {
-    // Count nodes to allocate array
+    // Compte le nombre de noeuds pour l'allocation dynamique qui va suivre 
     int nodeCount = 0;
     void countNodes(NoeudAVL *n) {
         if (n == NULL) return;
@@ -301,7 +358,7 @@ void processTopAndBottomLV(NoeudAVL *root, const char *outputFile) {
     }
     countNodes(root);
 
-    // Allocate array for nodes
+    // Tableau dynamique de type NodeInfo à travers une allocation dynamique
     NodeInfo *nodes = (NodeInfo *)malloc(sizeof(NodeInfo) * nodeCount);
     if (nodes == NULL) {
         perror("Allocation error");
@@ -312,10 +369,10 @@ void processTopAndBottomLV(NoeudAVL *root, const char *outputFile) {
     int index = 0;
     collectNodes(root, nodes, &index);
 
-    // Sort nodes by consumption (descending)
+    // Tri bulle effectuant le tri par ordre décroissant de consommation
     bubbleSort(nodes, nodeCount);
 
-    // Open output file
+    // Ouvre le fichier outputFile
     FILE *file = fopen(outputFile, "w");
     if (file == NULL) {
         perror("Error opening output file");
@@ -323,19 +380,72 @@ void processTopAndBottomLV(NoeudAVL *root, const char *outputFile) {
         return;
     }
 
-    // Write header
-    fprintf(file, "ID,Capacite,Consommation\n");
+    // Ecrit la ligne d'entête
+    fprintf(file, "Station LV,Capacite,Consommation(max,min)\n");
 
-    // Write top 10 highest consuming stations
+    // Ecrit le top 10 des noeuds avec les consommations les plus fortes
     for (int i = 0; i < 10 && i < nodeCount; i++) {
         fprintf(file, "%d,%lld,%lld\n", nodes[i].id, nodes[i].capacite, nodes[i].consommation);
     }
 
-    // Write top 10 lowest consuming stations
+    // Ecrit le top 10 des noeuds avec les consommations les plus faibles
     for (int i = nodeCount - 10; i < nodeCount; i++) {
         if (i >= 0) {
             fprintf(file, "%d,%lld,%lld\n", nodes[i].id, nodes[i].capacite, nodes[i].consommation);
         }
+    }
+
+    fclose(file);
+    free(nodes);
+}
+
+
+// Comparateur pour trier les nœuds par capacité croissante
+int compareByCapacity(const void *a, const void *b) {
+    NodeInfo *nodeA = (NodeInfo *)a;
+    NodeInfo *nodeB = (NodeInfo *)b;
+    if (nodeA->capacite < nodeB->capacite) return -1;
+    if (nodeA->capacite > nodeB->capacite) return 1;
+    return 0;
+}
+
+// Fonction pour collecter les nœuds et les trier
+void collectAndSortByCapacity(NoeudAVL *root, const char *outputFile) {
+    // Compter les nœuds pour allouer un tableau
+    int nodeCount = 0;
+
+    void countNodes(NoeudAVL *node) {
+        if (node == NULL) return;
+        countNodes(node->gauche);
+        nodeCount++;
+        countNodes(node->droite);
+    }
+    countNodes(root);
+
+    // Allouer un tableau pour les nœuds
+    NodeInfo *nodes = (NodeInfo *)malloc(sizeof(NodeInfo) * nodeCount);
+    if (nodes == NULL) {
+        perror("Erreur d'allocation mémoire");
+        return;
+    }
+
+    // Collecter les nœuds dans le tableau
+    int index = 0;
+    collectNodes(root, nodes, &index);
+
+    // Trier le tableau par capacité
+    qsort(nodes, nodeCount, sizeof(NodeInfo), compareByCapacity);
+
+    // Écrire les données triées dans le fichier CSV
+    FILE *file = fopen(outputFile, "a");
+    if (file == NULL) {
+        perror("Erreur lors de l'ouverture du fichier CSV");
+        free(nodes);
+        return;
+    }
+
+    for (int i = 0; i < nodeCount; i++) {
+        fprintf(file, "%d:%lld:%lld\n", nodes[i].id, nodes[i].capacite, nodes[i].consommation);
     }
 
     fclose(file);
