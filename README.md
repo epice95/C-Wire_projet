@@ -27,8 +27,62 @@ Le programme traite un fichier CSV volumineux (**c-wire_v25.dat**) à l’aide d
 
 **1 - Cloner le dépôt Git**
 
+git clone https://github.com/epice95/C-Wire_projet.git
+
+
+cd C-Wire_projet
+
+
+ls (pour vérifier que tout c'est bien passé)
+
+
 **2 - Donner les droits d’exécution au script**
+
 chmod +x c-wire.sh
 
 **3 - Placer le fichier de données**
+
 Assurez-vous que le fichier c-wire_v25.dat est dans le dossier input/.
+
+**____________________________________________________________________________________________________________________________**
+
+**Exécution du script**
+
+Le script s'exécute avec les paramètres suivants :
+
+./c-wire.sh input/c-wire_v25 <type_station> <type_consommateur> [<id_centrale>] [-h]  (les crochets veulent dire que c'est facultatif)
+
+**Paramètres**
+
+chemin_du_fichier : Chemin vers le fichier c-wire_v25.dat (obligatoire).
+
+
+type_station : Type de station à analyser (obligatoire) :
+
+    hvb : Stations HV-B
+
+    
+    hva : Stations HV-A
+
+    
+    lv : Postes LV
+
+    
+
+type_consommateur : Type de consommateur à analyser (obligatoire) :
+
+    comp : Entreprises
+
+    
+    indiv : Particuliers
+
+    
+    all : Tous les consommateurs
+
+    
+
+id_centrale : ID de la centrale à filtrer (optionnel).
+
+
+-h : Affiche l’aide.
+
