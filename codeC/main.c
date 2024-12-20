@@ -69,6 +69,9 @@ int main() {
         MaxEtMinLV(racine, "lv_all_minmax.csv");
         // **Efficacité** : Confirmation visuelle que le fichier spécial a été créé avec succès.
         printf("Fichier 'lv_all_minmax.csv' généré.\n"); 
+        // Appel à la génération du graphique GnuPlot
+        creerGraphique(racine);
+        printf("graphique gnulot généré dans le dossier graphs.\n");
     }
     
     liberer_arbre(racine); // **Robustesse** : Programme assuré par une libération complète de tout les noeuds de l'AVL racine

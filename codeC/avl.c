@@ -526,6 +526,89 @@ void collecterEtTrierParCapacite(NoeudAVL *racine, const char *outputFile) {
     free(noeuds); // **Robustesse** : Libération de la mémoire allouée pour éviter les fuites.
 }
 
+
+// Génère un fichier de données pour GnuPlot
+void genererFichierGnuPlot(NoeudAVL *racine, const char *outputFile) {
+    if (racine == NULL || outputFile == NULL) {
+        fprintf(stderr, "Erreur : Paramètres invalides pour genererFichierGnuPlot\n");
+        return;
+    }
+
+    int totalNoeuds = 0;
+    void compterNoeuds(NoeudAVL *noeud) {
+        if (noeud == NULL) return;
+        compterNoeuds(noeud->gauche);
+        totalNoeuds++;
+        compterNoeuds(noeud->droite);
+    }
+    compterNoeuds(racine);
+
+    NodeInfo *noeuds = malloc(totalNoeuds * sizeof(NodeInfo));
+    if (noeuds == NULL) {
+        perror("Erreur d'allocation mémoire");
+        return;
+    }
+
+    int index = 0;
+    collecterNoeuds(racine, noeuds, &index);
+    qsort(noeuds, totalNoeuds, sizeof(NodeInfo), compareParConsommation);
+
+    FILE *file = fopen(outputFile, "w");
+    if (file == NULL) {
+        perror("Erreur d'ouverture du fichier pour GnuPlot");
+        free(noeuds);
+        return;
+    }
+
+    fprintf(file, "ID Consommation\n");
+    for (int i = 0; i < 10 && i < totalNoeuds; i++) {
+        fprintf(file, "%d %lld\n", noeuds[i].id, noeuds[i].consommation);
+    }
+    for (int i = totalNoeuds - 10; i < totalNoeuds; i++) {
+        if (i >= 0) {
+            fprintf(file, "%d %lld\n", noeuds[i].id, noeuds[i].consommation);
+        }
+    }
+
+    fclose(file);
+    free(noeuds);
+}
+
+// Génère le script GnuPlot
+void genererScriptGnuPlot(const char *dataFile, const char *outputImage) {
+    FILE *file = fopen("graphs/gnuplot_script.txt", "w");
+    if (file == NULL) {
+        perror("Erreur d'ouverture du fichier de script GnuPlot");
+        return;
+    }
+
+    fprintf(file, "set terminal png size 800,600\n");
+    fprintf(file, "set output '%s'\n", outputImage);
+    fprintf(file, "set title 'Postes LV les plus et les moins chargés'\n");
+    fprintf(file, "set style fill solid 1.0 border -1\n");
+    fprintf(file, "set boxwidth 0.5\n");
+    fprintf(file, "set xtics rotate by -45\n");
+    fprintf(file, "plot '%s' using 2:xtic(1) title '' with boxes lc rgb 'red'\n", dataFile);
+
+    fclose(file);
+}
+
+// Exécute le script GnuPlot
+void executerGnuPlot() {
+    system("gnuplot graphs/gnuplot_script.txt");
+}
+
+// Appel principal
+void creerGraphique(NoeudAVL *racine) {
+    const char *dataFile = "graphs/gnuplot_data.txt";
+    const char *outputImage = "graphs/lv_chart.png";
+
+    genererFichierGnuPlot(racine, dataFile);
+    genererScriptGnuPlot(dataFile, outputImage);
+    executerGnuPlot();
+}
+
+
 // Fonction pour libérer l'arbre AVL
 void liberer_arbre(NoeudAVL *n) {
     // **Robustesse** : Vérifie si le nœud est NULL avant de procéder.
@@ -536,3 +619,5 @@ void liberer_arbre(NoeudAVL *n) {
     liberer_arbre(n->droite); // **Efficacité** : Parcours récursif du sous-arbre droit pour libérer ses nœuds.
     free(n); // **Robustesse et Efficacité** : Libère la mémoire du nœud courant.
 }
+
+
