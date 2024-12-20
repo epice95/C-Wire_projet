@@ -138,6 +138,8 @@ Les résultats sont stockés dans des fichiers CSV au format suivant :
     <type_station>_<type_consommateur>.csv (ex. : hva_comp.csv).
     lv_all_minmax.csv : Pour les postes LV avec le plus et le moins de consommation.
 
+**BONUS** le cas bonus à été traité, dans le cas de la commande lv all, aller dans le dossier graphs et vous verrez le graphique ainsi que le script gnuplot
+
 Chaque ligne des fichiers contient :
 
     Identifiant de la station.
