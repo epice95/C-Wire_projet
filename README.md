@@ -86,3 +86,86 @@ id_centrale : ID de la centrale à filtrer (optionnel).
 
 -h : Affiche l’aide.
 
+**Exemples**
+
+**1. Pour analyser les stations HV-A et les entreprises :**
+
+
+./c-wire.sh input/c-wire_v25.dat hva comp
+
+
+**2. Pour analyser les postes LV et tous les consommateurs liés à la centrale 3 :**
+
+
+./c-wire.sh input/c-wire_v25.dat lv all 3
+
+
+**3. Pour afficher l’aide :**
+
+
+./c-wire.sh -h
+
+
+**____________________________________________________________________________________________________________________________**
+
+
+**Détails du script**
+
+    Vérifie les options fournies.
+
+    
+    Compile le programme C avec make si nécessaire.
+
+    
+    Nettoie ou crée les dossiers tmp/ et graphs/.
+
+    
+    Filtre les données dans le fichier .dat selon les options.
+
+    
+    Exécute le programme C pour effectuer les calculs.
+
+    
+    Génère les fichiers de résultats dans le dossier tests/.
+
+**____________________________________________________________________________________________________________________________**
+
+
+**Résultats**
+
+Les résultats sont stockés dans des fichiers CSV au format suivant :
+
+    <type_station>_<type_consommateur>.csv (ex. : hva_comp.csv).
+    lv_all_minmax.csv : Pour les postes LV avec le plus et le moins de consommation.
+
+Chaque ligne des fichiers contient :
+
+    Identifiant de la station.
+    Capacité en kWh.
+    Consommation en kWh.
+
+
+**____________________________________________________________________________________________________________________________**
+
+
+**Limitations et améliorations possibles**
+
+
+Les performances peuvent être limitées par la taille des données.
+
+
+Les graphiques sont générés uniquement pour le cas lv_all.
+
+
+**____________________________________________________________________________________________________________________________**
+
+**Auteurs**
+
+- ZAAROUR Chady
+- BOUIDEGHAGHEN Aline
+- BOUABDALLAH-JAQUET Leo
+
+Contactez-nous sur Teams si vous avez un problème, nous sommes tout le temps disponible.
+
+
+
