@@ -28,5 +28,6 @@ Le programme traite un fichier CSV volumineux (**c-wire_v25.dat**) à l’aide d
 
 **2 - Donner les droits d’exécution au script**
 chmod +x c-wire.sh
+
 **3 - Placer le fichier de données**
 Assurez-vous que le fichier c-wire_v25.dat est dans le dossier input/.
