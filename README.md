@@ -38,7 +38,7 @@ ls (pour vérifier que tout c'est bien passé)
 
 **2 - Donner les droits d’exécution au script**
 
-chmod +x c-wire.sh
+```bash chmod +x c-wire.sh```
 
 **3 - Placer le fichier de données**
 
@@ -50,7 +50,7 @@ Assurez-vous que le fichier c-wire_v25.dat est dans le dossier input/.
 
 Le script s'exécute avec les paramètres suivants :
 
-```./c-wire.sh input/c-wire_v25 <type_station> <type_consommateur> [<id_centrale>] [-h]```  (les crochets veulent dire que c'est facultatif)
+```bash ./c-wire.sh input/c-wire_v25 <type_station> <type_consommateur> [<id_centrale>] [-h]```  (les crochets veulent dire que c'est facultatif)
 
 **Paramètres**
 
