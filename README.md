@@ -14,3 +14,13 @@ Le programme traite un fichier CSV volumineux (**c-wire_v25.dat**) à l’aide d
     tmp/ : Dossier temporaire pour les fichiers intermédiaires.
     graphs/ : Dossier pour stocker les graphiques générés.
     tests/ : Contient les fichiers résultats des traitements.
+**____________________________________________________________________________________________________________________________**
+
+**Prérequis**
+
+    Un système Unix/Linux avec Bash installé.
+    Accès à un compilateur C (ex. : gcc).
+    GnuPlot pour les graphiques (facultatif).
+**____________________________________________________________________________________________________________________________**
+
+**Étapes d'installation et d'exécution**
