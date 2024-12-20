@@ -24,6 +24,7 @@ Le programme traite un fichier CSV volumineux (**c-wire_v25.dat**) à l’aide d
 **____________________________________________________________________________________________________________________________**
 
 **Étapes d'installation et d'exécution**
+
 **1 - Cloner le dépôt Git**
 
 **2 - Donner les droits d’exécution au script**
