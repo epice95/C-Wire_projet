@@ -32,12 +32,11 @@ NoeudAVL *inserer(NoeudAVL *n, NoeudAVL *nouveau); // Retourne l'AVL après l'in
 NoeudAVL *rechercher(NoeudAVL *n, int id); // Retourne un noeud de l'AVL en fonction de son ID à travers une recherche
 NoeudAVL *lire_fichier_station(FILE *fic); // Récupère les données du fichier station généré par le script Shell
 void lire_fichier_consommateur(FILE *fic, NoeudAVL *n); // Récupère les données du fichier usagers généré par le script Shell
-void ecrire_parcours_inf(NoeudAVL *n, FILE *fichier); // Genere un fichier de sortie csv à l'aide d'un parcours infixe 
-void collectNodes(NoeudAVL *node, NodeInfo *array, int *index); // Collecte les postes LV (id,capacite et consommation) dans un tableau de type NodeInfo
-void bubbleSort(NodeInfo *array, int size); // trie les postes LV collectés par la consommation décroissante
-void processTopAndBottomLV(NoeudAVL *root, const char *outputFile); // Genere le fichier de sortie csv "lv_all_minmac.csv" selon l'ordre des consommations décroissantes
-int compareByCapacity(const void *a, const void *b);
-void collectAndSortByCapacity(NoeudAVL *root, const char *outputFile);
+void collecterNoeuds(NoeudAVL *node, NodeInfo *array, int *index); // Collecte les postes LV (id,capacite et consommation) dans un tableau de type NodeInfo
+int compareParConsommation(const void *a, const void *b); // trie les postes LV collectés par la consommation décroissante
+void MaxEtMinLV(NoeudAVL *root, const char *outputFile); // Genere le fichier de sortie csv "lv_all_minmac.csv" selon l'ordre des consommations décroissantes
+int compareParCapacite(const void *a, const void *b); // Compare par capacité deux élements de type const void 
+void collecterEtTrierParCapacite(NoeudAVL *root, const char *outputFile); // Extrait les stations, les tries par capacités et les affiches par ordre de capacité croissante
 void liberer_arbre(NoeudAVL *n); // libère chaque noeuds de l'AVL pour contrecarrer les fuites mémoires 
 
 #endif
