@@ -38,7 +38,7 @@ ls (pour vérifier que tout c'est bien passé)
 
 **2 - Donner les droits d’exécution au script**
 
-```bash chmod +x c-wire.sh```
+```chmod +x c-wire.sh```
 
 **3 - Placer le fichier de données**
 
@@ -50,9 +50,7 @@ Assurez-vous que le fichier c-wire_v25.dat est dans le dossier input/.
 
 Le script s'exécute avec les paramètres suivants :
 
-```bash 
-
-./c-wire.sh input/c-wire_v25 <type_station> <type_consommateur> [<id_centrale>] [-h]```  (les crochets veulent dire que c'est facultatif)
+``` ./c-wire.sh input/c-wire_v25 <type_station> <type_consommateur> [<id_centrale>] [-h]```  (les crochets veulent dire que c'est facultatif)
 
 **Paramètres**
 
@@ -93,19 +91,19 @@ id_centrale : ID de la centrale à filtrer (optionnel).
 **1. Pour analyser les stations HV-A et les entreprises :**
 
 
-./c-wire.sh input/c-wire_v25.dat hva comp
+```./c-wire.sh input/c-wire_v25.dat hva comp```
 
 
 **2. Pour analyser les postes LV et tous les consommateurs liés à la centrale 3 :**
 
 
-./c-wire.sh input/c-wire_v25.dat lv all 3
+```./c-wire.sh input/c-wire_v25.dat lv all 3```
 
 
 **3. Pour afficher l’aide :**
 
 
-./c-wire.sh -h
+```./c-wire.sh -h```
 
 
 **____________________________________________________________________________________________________________________________**
