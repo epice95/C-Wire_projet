@@ -62,11 +62,11 @@ int main() {
     
 
     // CAS SPECIAL : traitement de la commande lv all
-    if (strcmp(nom_fichier,"lv_all.csv") == 0) { 
+    if (strcmp(nom_fichier,"tests/lv_all.csv") == 0) { 
         // **Efficacité** : Indique l'exécution d'une tâche spécifique pour les fichiers `lv_all.csv`
         printf("Génération des informations LV...\n");
         // **Efficacité** : Génère un fichier distinct contenant les 10 stations les plus et les moins chargées
-        MaxEtMinLV(racine, "lv_all_minmax.csv");
+        MaxEtMinLV(racine, "tests/lv_all_minmax.csv");
         // **Efficacité** : Confirmation visuelle que le fichier spécial a été créé avec succès.
         printf("Fichier 'lv_all_minmax.csv' généré.\n"); 
         // Appel à la génération du graphique GnuPlot

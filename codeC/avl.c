@@ -78,16 +78,16 @@ void choisirNomFichier(char *nom_fichier, char *nom_fichier2) {
         if (items_read == 8) {
             // Vérifier quel type de fichier c'est et choisir le nom
             if (atoi(elt3) != 0) {  // Par exemple, si elt3 a une valeur non nulle
-                strcpy(nom_fichier, "hva_comp.csv");
+                strcpy(nom_fichier, "tests/hva_comp.csv");
                 strcpy(nom_fichier2, "Station HV-A");
             } else if (atoi(elt2) != 0) {  // Si elt2 a une valeur
-                strcpy(nom_fichier, "hvb_comp.csv");
+                strcpy(nom_fichier, "tests/hvb_comp.csv");
                 strcpy(nom_fichier2, "Station HV-B");
             } else if (atoi(elt5) != 0) {  // Vérifier un autre champ pour "lv_all"
-                strcpy(nom_fichier, "lv_all.csv");
+                strcpy(nom_fichier, "tests/lv_all.csv");
                 strcpy(nom_fichier2, "Station LV");
             } else {
-                strcpy(nom_fichier, "lv_indiv.csv");
+                strcpy(nom_fichier, "tests/lv_indiv.csv");
                 strcpy(nom_fichier2, "Station LV");
             }
         } else {
