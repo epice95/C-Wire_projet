@@ -27,13 +27,13 @@ Le programme traite un fichier CSV volumineux (**c-wire_v25.dat**) à l’aide d
 
 **1 - Cloner le dépôt Git**
 
-git clone https://github.com/epice95/C-Wire_projet.git
+```git clone https://github.com/epice95/C-Wire_projet.git```
 
 
-cd C-Wire_projet
+```cd C-Wire_projet```
 
 
-ls (pour vérifier que tout c'est bien passé)
+```ls``` (pour vérifier que tout c'est bien passé)
 
 
 **2 - Donner les droits d’exécution au script**
