@@ -94,10 +94,10 @@ id_centrale : ID de la centrale à filtrer (optionnel).
 ```./c-wire.sh input/c-wire_v25.dat hva comp```
 
 
-**2. Pour analyser les postes LV et tous les consommateurs liés à la centrale 3 :**
+**2. Pour analyser les postes LV et tous les consommateurs  :**
 
 
-```./c-wire.sh input/c-wire_v25.dat lv all 3```
+```./c-wire.sh input/c-wire_v25.dat lv all```
 
 
 **3. Pour afficher l’aide :**
