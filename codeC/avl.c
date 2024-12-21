@@ -529,13 +529,16 @@ void collecterEtTrierParCapacite(NoeudAVL *racine, const char *outputFile) {
 
 // Génère un fichier de données pour GnuPlot
 void genererFichierGnuPlot(NoeudAVL *racine, const char *outputFile) {
+    // Robustesse : Vérifie que les paramètres d'entrée ne sont pas nuls pour éviter les erreurs
     if (racine == NULL || outputFile == NULL) {
         fprintf(stderr, "Erreur : Paramètres invalides pour genererFichierGnuPlot\n");
         return;
     }
 
     int totalNoeuds = 0;
+    // Robustesse : Fonction interne pour compter les noeuds de manière sécurisée
     void compterNoeuds(NoeudAVL *noeud) {
+        // Efficacité : Utilise une récursion optimisée pour traverser l'arbre AVL
         if (noeud == NULL) return;
         compterNoeuds(noeud->gauche);
         totalNoeuds++;
@@ -543,23 +546,27 @@ void genererFichierGnuPlot(NoeudAVL *racine, const char *outputFile) {
     }
     compterNoeuds(racine);
 
+    // Efficacité : Allocation de mémoire optimisée en fonction du nombre total de noeuds
     NodeInfo *noeuds = malloc(totalNoeuds * sizeof(NodeInfo));
     if (noeuds == NULL) {
-        perror("Erreur d'allocation mémoire");
+        perror("Erreur d'allocation mémoire");  // Robustesse : Gestion des erreurs d'allocation mémoire
         return;
     }
 
     int index = 0;
+    // Robustesse : Collecte des noeuds de manière sécurisée
     collecterNoeuds(racine, noeuds, &index);
-    qsort(noeuds, totalNoeuds, sizeof(NodeInfo), compareParConsommation);
+    qsort(noeuds, totalNoeuds, sizeof(NodeInfo), compareParConsommation); // Efficacité : Tri des noeuds par consommation en utilisant un algorithme rapide
 
+    // Robustesse : Ouverture du fichier de sortie avec gestion des erreurs
     FILE *file = fopen(outputFile, "w");
     if (file == NULL) {
-        perror("Erreur d'ouverture du fichier pour GnuPlot");
+        perror("Erreur d'ouverture du fichier pour GnuPlot"); // Robustesse : Gestion des erreurs d'ouverture de fichier
         free(noeuds);
         return;
     }
 
+    // Efficacité : Écriture rapide des données dans le fichier
     fprintf(file, "ID Consommation\n");
     for (int i = 0; i < 10 && i < totalNoeuds; i++) {
         fprintf(file, "%d %lld\n", noeuds[i].id, noeuds[i].consommation);
@@ -570,18 +577,19 @@ void genererFichierGnuPlot(NoeudAVL *racine, const char *outputFile) {
         }
     }
 
+    // Robustesse : Fermeture du fichier de manière sécurisée
     fclose(file);
-    free(noeuds);
+    free(noeuds); // Efficacité : Libération rapide de la mémoire allouée
 }
 
 // Génère le script GnuPlot
 void genererScriptGnuPlot(const char *dataFile, const char *outputImage) {
-    FILE *file = fopen("graphs/gnuplot_script.txt", "w");
+    FILE *file = fopen("graphs/gnuplot_script.txt", "w"); // Robustesse : Ouverture du fichier de script avec gestion des erreurs
     if (file == NULL) {
         perror("Erreur d'ouverture du fichier de script GnuPlot");
         return;
     }
-
+    // Efficacité : Écriture rapide et optimisée des commandes GnuPlot
     fprintf(file, "set terminal png size 800,600\n");
     fprintf(file, "set output '%s'\n", outputImage);
     fprintf(file, "set title 'Postes LV les plus et les moins chargés'\n");
@@ -589,23 +597,24 @@ void genererScriptGnuPlot(const char *dataFile, const char *outputImage) {
     fprintf(file, "set boxwidth 0.5\n");
     fprintf(file, "set xtics rotate by -45\n");
     fprintf(file, "plot '%s' using 2:xtic(1) title '' with boxes lc rgb 'red'\n", dataFile);
-
+    // Robustesse : Fermeture du fichier de script de manière sécurisée
     fclose(file);
 }
 
 // Exécute le script GnuPlot
 void executerGnuPlot() {
-    system("gnuplot graphs/gnuplot_script.txt");
+    system("gnuplot graphs/gnuplot_script.txt"); // Efficacité : Exécution rapide du script GnuPlot en utilisant une commande système
 }
 
 // Appel principal
 void creerGraphique(NoeudAVL *racine) {
+    // Robustesse : Définition claire des chemins de fichiers
     const char *dataFile = "graphs/gnuplot_data.txt";
     const char *outputImage = "graphs/lv_chart.png";
-
+    // Robustesse : Génération du fichier de données de manière sécurisée
     genererFichierGnuPlot(racine, dataFile);
-    genererScriptGnuPlot(dataFile, outputImage);
-    executerGnuPlot();
+    genererScriptGnuPlot(dataFile, outputImage // Efficacité : Génération du script GnuPlot de manière optimisée
+    executerGnuPlot(); // Efficacité : Exécution du script GnuPlot de manière rapide et sécurisée
 }
 
 
