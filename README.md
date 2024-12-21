@@ -46,6 +46,9 @@ Assurez-vous que le fichier c-wire_v25.dat est dans le dossier input/.
 
 **____________________________________________________________________________________________________________________________**
 
+**AVERTISSEMENT Nous avons déjà mis des tests d'executions dans le dossier ```tests```, vous pouvez les mettre à la corbeille et executer le programme pour les faire apparaître de vous-même**
+
+
 **Exécution du script**
 
 Le script s'exécute avec les paramètres suivants :
@@ -120,7 +123,7 @@ id_centrale : ID de la centrale à filtrer (optionnel).
     Nettoie ou crée les dossiers tmp/ et graphs/.
 
     
-    Filtre les données dans le fichier .dat selon les options.
+    Filtre les données dans le fichier .dat selon les options en deux fichiers dans le dossier de fichier temporaire ```tmp```
 
     
     Exécute le programme C pour effectuer les calculs.
@@ -133,7 +136,10 @@ id_centrale : ID de la centrale à filtrer (optionnel).
 
 **Résultats**
 
-Les résultats sont stockés dans des fichiers CSV au format suivant :
+
+Dans le dossier ```tmp```vous verrez les deux fichier contenant les stations et consommateurs filtré par le script shell
+
+Les résultats sont stockés dans des fichiers CSV, dans le dossier test, au format suivant :
 
     <type_station>_<type_consommateur>.csv (ex. : hva_comp.csv).
     lv_all_minmax.csv : Pour les postes LV avec le plus et le moins de consommation.
@@ -143,8 +149,8 @@ Les résultats sont stockés dans des fichiers CSV au format suivant :
 Chaque ligne des fichiers contient :
 
     Identifiant de la station.
-    Capacité en kWh.
-    Consommation en kWh.
+    Capacité en kWh. (trie croissant)
+    Consommation en kWh. (trie décroissant dans le cas de ```lv_all_minmax.csv```)
 
 
 **____________________________________________________________________________________________________________________________**
@@ -156,7 +162,7 @@ Chaque ligne des fichiers contient :
 Les performances peuvent être limitées par la taille des données.
 
 
-Les graphiques sont générés uniquement pour le cas lv_all.
+Les graphiques en couleurs sont générés uniquement pour le cas lv_all.
 
 
 **____________________________________________________________________________________________________________________________**
