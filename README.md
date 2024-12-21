@@ -156,10 +156,7 @@ Chaque ligne des fichiers contient :
 **____________________________________________________________________________________________________________________________**
 
 
-**Limitations et améliorations possibles**
-
-
-Les performances peuvent être limitées par la taille des données.
+**Graphique**
 
 
 Les graphiques en couleurs sont générés uniquement pour le cas lv_all.
