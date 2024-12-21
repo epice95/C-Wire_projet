@@ -150,7 +150,7 @@ Chaque ligne des fichiers contient :
 
     Identifiant de la station.
     Capacité en kWh. (trie croissant)
-    Consommation en kWh. (trie décroissant dans le cas de ```lv_all_minmax.csv```)
+    Consommation en kWh. (trie décroissant dans le cas de lv_all_minmax.csv)
 
 
 **____________________________________________________________________________________________________________________________**
