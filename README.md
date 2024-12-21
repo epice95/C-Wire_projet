@@ -159,7 +159,7 @@ Chaque ligne des fichiers contient :
 **Graphique**
 
 
-Les graphiques en couleurs sont générés uniquement pour le cas lv_all.
+Les graphiques en couleurs sont générés uniquement pour le cas lv_all en couleur (bonus)
 
 
 **____________________________________________________________________________________________________________________________**
