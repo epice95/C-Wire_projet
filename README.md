@@ -20,7 +20,7 @@ Le programme traite un fichier CSV volumineux (**c-wire_v25.dat**) à l’aide d
 
     Un système Unix/Linux avec Bash installé.
     Accès à un compilateur C.
-    GnuPlot pour les graphiques (facultatif).
+    GnuPlot pour les graphiques.
 **____________________________________________________________________________________________________________________________**
 
 **Étapes d'installation et d'exécution**
