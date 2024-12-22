@@ -8,6 +8,8 @@ Le programme traite un fichier CSV volumineux (**c-wire_v25.dat**) à l’aide d
 
 **Structure du projet**
 
+**dans le dossier principal ```C-Wire_projet```**
+
     c-wire.sh : Script Shell principal pour le filtrage et l’exécution.
     codeC/ : Contient le programme en C, le Makefile pour la compilation.
     input/ : Dossier contenant le fichier de données c-wire_v25.dat.
@@ -47,14 +49,14 @@ Assurez-vous que le fichier c-wire_v25.dat est dans le dossier input/.
 
 **____________________________________________________________________________________________________________________________**
 
-**AVERTISSEMENT** _ Les fichiers d'éxecutions sont dirigé dans le dossier ```tests```, Or nous avons déjà mis des tests d'executions dans le dossier ```tests```, vous pouvez les mettre à la corbeille et executer le programme pour les faire apparaître de vous-même si vous le souhaitez, mais ca revient au même car après execution ils sont remplacé.
+**AVERTISSEMENT**  Les fichiers d'éxecutions sont dirigé dans le dossier ```tests```, Or nous avons déjà mis des tests d'executions dans le dossier ```tests```, vous pouvez les mettre à la corbeille et executer le programme pour les faire apparaître de vous-même si vous le souhaitez, mais ca revient au même car après execution ils sont remplacé
 
 
 **Exécution du script**
 
 Le script s'exécute avec les paramètres suivants :
 
-``` ./c-wire.sh input/c-wire_v25 <type_station> <type_consommateur> [<id_centrale>] [-h]```  (les crochets veulent dire que c'est facultatif)
+``` ./c-wire.sh input/c-wire_v25.dat <type_station> <type_consommateur> [<id_centrale>] [-h]```  (les crochets veulent dire que c'est facultatif)
 
 **Paramètres**
 
@@ -87,7 +89,7 @@ type_consommateur : Type de consommateur à analyser (obligatoire) :
 
 id_centrale : ID de la centrale à filtrer (optionnel)
 
-**AVERTISSEMENT** Si vous mettez l'option d'id_centrale, il sera nommé par le nom respectif du type de station et du type de consommateur, Par exemple ```hva comp 3``` sera nommé hva_comp.csv / ```lv comp 6``` sera nommé lva_comp.csv , donc si un fichier du même nom existe, il sera remplacé par ce dernier (a part si vous sortez le fichier inital du dossier ```test```)
+**AVERTISSEMENT**  Si vous mettez l'option d'id_centrale, il sera nommé par le nom respectif du type de station et du type de consommateur, Par exemple ```hva comp 3``` sera nommé hva_comp.csv / ```lv comp 6``` sera nommé lva_comp.csv , donc si un fichier du même nom existe, il sera remplacé par ce dernier (a part si vous sortez le fichier inital du dossier ```test```)
 
 
 -h : Affiche l’aide.
@@ -147,7 +149,7 @@ Les résultats sont stockés dans des fichiers CSV, dans le dossier test, au for
     <type_station>_<type_consommateur>.csv (ex. : hva_comp.csv).
     lv_all_minmax.csv : Pour les postes LV avec le plus et le moins de consommation.
 
-**BONUS** le cas bonus à été traité, dans le cas de la commande lv all, aller dans le dossier graphs et vous verrez le graphique ainsi que le script gnuplot
+**BONUS** le cas bonus à été traité, dans le cas de la commande lv all, aller dans le dossier graphs et vous verrez le graphique en couleur ainsi que le script gnuplot
 
 Chaque ligne des fichiers contient :
 
@@ -162,7 +164,7 @@ Chaque ligne des fichiers contient :
 **Graphique**
 
 
-Les graphiques en couleurs sont générés uniquement pour le cas lv_all en couleur (bonus)
+Le graphique en couleur est généré uniquement pour le cas lv_all en couleur comme requis (bonus)
 
 
 **____________________________________________________________________________________________________________________________**
@@ -173,7 +175,7 @@ Les graphiques en couleurs sont générés uniquement pour le cas lv_all en coul
 - BOUIDEGHAGHEN Aline
 - BOUABDALLAH-JAQUET Leo
 
-Contactez-nous sur Teams si vous avez un problème, nous sommes tout le temps disponible, merci de votre attention !
+Contactez-nous sur Teams si vous avez un problème, nous sommes tout le temps disponible, **merci de votre attention** !
 
 
 
