@@ -35,6 +35,7 @@ Le programme traite un fichier CSV volumineux (**c-wire_v25.dat**) à l’aide d
 
 ```ls``` (pour vérifier que tout c'est bien passé)
 
+_si vous preferez télécharger les fichiers et les mettre manuellement dans les dossiers, vous pouvez le faire, tout en faisant attention de suivre la structure du projet (indiqué précedemment par l'arborescence des fichier plus haut)_
 
 **2 - Donner les droits d’exécution au script**
 
