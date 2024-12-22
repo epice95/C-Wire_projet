@@ -37,10 +37,10 @@ int compareParConsommation(const void *a, const void *b); // trie les postes LV 
 void MaxEtMinLV(NoeudAVL *root, const char *outputFile); // Genere le fichier de sortie csv "lv_all_minmac.csv" selon l'ordre des consommations décroissantes
 int compareParCapacite(const void *a, const void *b); // Compare par capacité deux élements de type const void 
 void collecterEtTrierParCapacite(NoeudAVL *root, const char *outputFile); // Extrait les stations, les tries par capacités et les affiches par ordre de capacité croissante
-void genererFichierGnuPlot(NoeudAVL *racine, const char *outputFile);
-void genererScriptGnuPlot(const char *dataFile, const char *outputImage);
-void executerGnuPlot();
-void creerGraphique(NoeudAVL *racine);
+void genererFichierGnuPlot(NoeudAVL *racine, const char *outputFile); // Genere le fichier Gnuplot
+void genererScriptGnuPlot(const char *dataFile, const char *outputImage); // Genere le script Gnuplot
+void executerGnuPlot(); // Execute le script Gnuplot
+void creerGraphique(NoeudAVL *racine); // Creer le graphique dans le dossier graphs
 void liberer_arbre(NoeudAVL *n); // libère chaque noeuds de l'AVL pour contrecarrer les fuites mémoires 
 
 #endif
