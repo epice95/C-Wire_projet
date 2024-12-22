@@ -46,7 +46,7 @@ Assurez-vous que le fichier c-wire_v25.dat est dans le dossier input/.
 
 **____________________________________________________________________________________________________________________________**
 
-**AVERTISSEMENT** _ Les fichiers d'éxecutions sont dirigé dans le dossier test, Or nous avons déjà mis des tests d'executions dans le dossier ```tests```, vous pouvez les mettre à la corbeille et executer le programme pour les faire apparaître de vous-même si vous le souhaitez, mais ca revient au même car après execution ils sont remplacés_
+**AVERTISSEMENT** _ Les fichiers d'éxecutions sont dirigé dans le dossier ```tests```, Or nous avons déjà mis des tests d'executions dans le dossier ```tests```, vous pouvez les mettre à la corbeille et executer le programme pour les faire apparaître de vous-même si vous le souhaitez, mais ca revient au même car après execution ils sont remplacés_
 
 
 **Exécution du script**
