@@ -138,7 +138,7 @@ id_centrale : ID de la centrale à filtrer (optionnel).
 **Résultats**
 
 
-Dans le dossier ```tmp```vous verrez les deux fichier contenant les stations et consommateurs filtré par le script shell
+Dans le dossier ```tmp```vous verrez les deux fichier contenant les stations et consommateurs filtré par le script shell, respectivement nommé ```temp_station.txt``` et ```temp_usager''' comme demandé.
 
 Les résultats sont stockés dans des fichiers CSV, dans le dossier test, au format suivant :
 
