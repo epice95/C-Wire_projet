@@ -85,7 +85,9 @@ type_consommateur : Type de consommateur à analyser (obligatoire) :
 
     
 
-id_centrale : ID de la centrale à filtrer (optionnel) **AVERTISSEMENT** Si vous mettez l'option d'id_centrale, il sera nommé par le nom respectif du type de station et du type de consommateur, Par exemple ```hva comp 3``` sera nommé hva_comp.csv / ```lv comp 6``` sera nommé lva_comp.csv , donc si un fichier du même nom existe, il sera remplacé par ce dernier (a part si vous sortez le fichier inital du dossier ```test```
+id_centrale : ID de la centrale à filtrer (optionnel)
+
+**AVERTISSEMENT** Si vous mettez l'option d'id_centrale, il sera nommé par le nom respectif du type de station et du type de consommateur, Par exemple ```hva comp 3``` sera nommé hva_comp.csv / ```lv comp 6``` sera nommé lva_comp.csv , donc si un fichier du même nom existe, il sera remplacé par ce dernier (a part si vous sortez le fichier inital du dossier ```test```
 
 
 -h : Affiche l’aide.
