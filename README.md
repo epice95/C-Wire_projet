@@ -47,7 +47,7 @@ Assurez-vous que le fichier c-wire_v25.dat est dans le dossier input/.
 
 **____________________________________________________________________________________________________________________________**
 
-**AVERTISSEMENT** _ Les fichiers d'éxecutions sont dirigé dans le dossier ```tests```, Or nous avons déjà mis des tests d'executions dans le dossier ```tests```, vous pouvez les mettre à la corbeille et executer le programme pour les faire apparaître de vous-même si vous le souhaitez, mais ca revient au même car après execution ils sont remplacés_
+**AVERTISSEMENT** _ Les fichiers d'éxecutions sont dirigé dans le dossier ```tests```, Or nous avons déjà mis des tests d'executions dans le dossier ```tests```, vous pouvez les mettre à la corbeille et executer le programme pour les faire apparaître de vous-même si vous le souhaitez, mais ca revient au même car après execution ils sont remplacé.
 
 
 **Exécution du script**
@@ -85,7 +85,7 @@ type_consommateur : Type de consommateur à analyser (obligatoire) :
 
     
 
-id_centrale : ID de la centrale à filtrer (optionnel).
+id_centrale : ID de la centrale à filtrer (optionnel) **AVERTISSEMENT** Si vous mettez l'option d'id_centrale, il sera nommé par le nom respectif du type de station et du type de consommateur, Par exemple ```hva comp 3``` sera nommé hva_comp.csv / ```lv comp 6``` sera nommé lva_comp.csv , donc si un fichier du même nom existe, il sera remplacé par ce dernier (a part si vous sortez le fichier inital du dossier ```test```
 
 
 -h : Affiche l’aide.
