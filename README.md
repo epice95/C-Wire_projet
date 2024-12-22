@@ -173,7 +173,7 @@ Les graphiques en couleurs sont générés uniquement pour le cas lv_all en coul
 - BOUIDEGHAGHEN Aline
 - BOUABDALLAH-JAQUET Leo
 
-Contactez-nous sur Teams si vous avez un problème, nous sommes tout le temps disponible.
+Contactez-nous sur Teams si vous avez un problème, nous sommes tout le temps disponible, merci de votre attention !
 
 
 
